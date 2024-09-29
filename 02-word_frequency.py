@@ -17,8 +17,6 @@ Hints:
 - The split() method can be useful for splitting text into words
 """
 
-from pathlib import Path
-import string
 import sys
 import re
 
