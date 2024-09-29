@@ -18,13 +18,25 @@ Hints:
 """
 
 import sys
+import string
+import re
 
 def word_frequency(text):
+    text = text.lower() #ignore case
+    text = re.sub(r'[^a-z0-9\s]', '', text) #remove everything except spaces and alphanumeric characters
+    words = text.split() #split text into words by whitespace
     frequencies = {} # Dictionary to store word frequencies
 
-    # Your code here
+    #function to count frequency of each word
+    for word in words:
+        if word in frequencies:
+            frequencies[word] += 1
+        else:
+            frequencies[word] = 1
+
+    sorted_list = sorted(frequencies.items())
     
-    return frequencies
+    return sorted_list
 
 # Scaffold for opening a file and running word_frequency() on the contents
 if __name__ == "__main__":
@@ -40,7 +52,7 @@ if __name__ == "__main__":
         frequencies = word_frequency(text)
         
         # Print results
-        for word, count in frequencies.items():
+        for word, count in frequencies:
             print(f"{word}: {count}")
     
     except FileNotFoundError:
