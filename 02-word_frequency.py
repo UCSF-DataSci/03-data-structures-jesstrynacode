@@ -36,7 +36,9 @@ def word_frequency(text):
 
     sorted_list = sorted(frequencies.items())
     
-    return sorted_list
+    sorted_list_20 = sorted_list[:20]
+
+    return sorted_list_20
 
 # Scaffold for opening a file and running word_frequency() on the contents
 if __name__ == "__main__":
