@@ -17,11 +17,12 @@ Hints:
 - The split() method can be useful for splitting text into words
 """
 
-import sys
+from pathlib import Path
 import string
+import sys
 import re
 
-def word_frequency(text):
+def word_frequency(text: str):
     text = text.lower() #ignore case
     text = re.sub(r'[^a-z0-9\s]', '', text) #remove everything except spaces and alphanumeric characters
     words = text.split() #split text into words by whitespace
@@ -34,7 +35,7 @@ def word_frequency(text):
         else:
             frequencies[word] = 1
 
-    sorted_list = sorted(frequencies.items())
+    sorted_list = sorted(frequencies.items()) #creating new sorted list in alphabetical order
     
     sorted_list_20 = sorted_list[:20]
 
@@ -54,7 +55,7 @@ if __name__ == "__main__":
         frequencies = word_frequency(text)
         
         # Print results
-        for word, count in frequencies:
+        for word, count in frequencies.items():
             print(f"{word}: {count}")
     
     except FileNotFoundError:
